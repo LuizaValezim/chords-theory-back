@@ -1,7 +1,7 @@
 from rest_framework import serializers
-from .models import User
+from .models import Combinations
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
-        model = User
-        fields = ['id','username', 'chords']
+        model = Combinations
+        fields = ['id','title', 'chords']
