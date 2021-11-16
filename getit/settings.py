@@ -1,17 +1,18 @@
 from pathlib import Path
+import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-zzv@!l2k*@%=@ta+4gy&in(&7)m_w*xmd#nou(4n3r7gcc3_!h'
 
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['frozen-badlands-04318.herokuapp.com', 'localhost', '127.0.0.1']
 
 INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
-    'chords.apps.ChordsConfig',
+    'chords.apps.CombinationConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,7 +43,7 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
-                'django.template.context_processors.request',
+                'django.template.context_processdeors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
@@ -53,14 +54,11 @@ TEMPLATES = [
 WSGI_APPLICATION = 'getit.wsgi.application'
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'chords',
-        'USER': 'chordsuser',
-        'PASSWORD': 'chordtheory123',
-        'HOST': 'localhost',
-        'PORT': '8000',
-    }
+    'default': dj_database_url.config(
+        default='postgresql://localhost/chordstheory?user=admin&password=admin',
+        conn_max_age=600,
+        ssl_require=not DEBUG
+    )
 }
 
 AUTH_PASSWORD_VALIDATORS = [
