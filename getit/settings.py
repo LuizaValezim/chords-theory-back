@@ -7,7 +7,7 @@ SECRET_KEY = 'django-insecure-zzv@!l2k*@%=@ta+4gy&in(&7)m_w*xmd#nou(4n3r7gcc3_!h
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['frozen-badlands-04318.herokuapp.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['chords-theory.herokuapp.com', 'localhost', '127.0.0.1']
 
 INSTALLED_APPS = [
     'corsheaders',
