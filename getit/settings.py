@@ -55,7 +55,7 @@ WSGI_APPLICATION = 'getit.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default='postgresql://localhost/chordstheory?user=admin&password=admin',
+        default='postgresql://chords-theory.herokuapp.com/chordstheory?user=admin&password=admin',
         conn_max_age=600,
         ssl_require=not DEBUG
     )
