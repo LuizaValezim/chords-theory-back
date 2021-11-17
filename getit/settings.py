@@ -7,7 +7,7 @@ SECRET_KEY = 'django-insecure-zzv@!l2k*@%=@ta+4gy&in(&7)m_w*xmd#nou(4n3r7gcc3_!h
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['frozen-badlands-04318.herokuapp.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['chords-theory.herokuapp.com', 'localhost', '127.0.0.1']
 
 INSTALLED_APPS = [
     'corsheaders',
@@ -55,7 +55,7 @@ WSGI_APPLICATION = 'getit.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default='postgresql://localhost/chordstheory?user=admin&password=admin',
+        default='postgresql://chords-theory.herokuapp.com/chordstheory?user=admin&password=admin',
         conn_max_age=600,
         ssl_require=not DEBUG
     )

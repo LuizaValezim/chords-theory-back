@@ -4,6 +4,7 @@ from rest_framework.response import Response
 from django.http import Http404
 from .serializers import CombinationsSerializer
 from .models import Combinations
+import requests
 
 def index(request):
     return HttpResponse("Olá! Bem vind@ ao Chords Theory, onde compor uma música nunca foi tão fácil.")    
@@ -40,3 +41,36 @@ def api_combinations_delete(request,id):
     combination = Combinations()
     serialized_combination = CombinationsSerializer(combination)
     return Response(serialized_combination.data) 
+
+
+# Fazendo o POST e o GET da API pelo backend
+def api_token():
+    URL = 'https://api.hooktheory.com/v1/users/auth'
+
+    headers = {
+        'Content-Type': 'application/json', 
+        'Accept':'application/json'
+    }
+
+    data ={ 'username':'luizavalezim',
+            'password':'luizavalezim123'}
+
+    r = requests.post(url=URL, headers=headers, data=data)
+
+    return r.json()['access_token']
+
+
+def get_songs(sufix):
+    access_token = api_token()
+
+    headers = {
+        f'Authorization': 'Bearer ' + access_token
+    }
+
+    try:
+        r = requests.get('https://api.hooktheory.com/v1/trends/' + sufix, headers=headers)
+        r.raise_for_status()
+    except:
+        return 'error'
+
+    return r.json()
